@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-
+import app from '@/util/api'
 export default {
     
     data(){
@@ -16,7 +16,9 @@ export default {
 
     },
     mounted(){
-
+        app.request('getproduct',{}).then(res=>{
+            console.log(res)
+        })
     }
 }
 </script>

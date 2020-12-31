@@ -1,15 +1,16 @@
 import { Message, Loading, MessageBox } from 'element-ui'
 import axios from 'axios'
 import bus from "./bus";
-import store from '../store'
-import { ApiUrl } from './const';
+
+
 const app = {
   request: function (url, data, type = 'get') {
     let temp = data
  
-    // let ApiUrl = 'https://all-api-test.xrzww.com/'
 
-    let ApiUrl = 'https://pre-api.xrzww.com/' //正式
+
+    // let ApiUrl = 'http://192.168.0.119:6969/' //本地
+    let ApiUrl = "/api" //vue 反向代理
 
 
    
@@ -35,12 +36,13 @@ const app = {
       }
 
       axios(obj).then(function (response) {
+        console.log(response,'却不敢')
         if (response.data.code == 200) {
           resolve(response.data);
 
 
         } else {
-          bus.$emit('allowok')
+         
           var load = Loading.service({})
           load.close()
      
